@@ -1,0 +1,12 @@
+.item {
+  margin-top: 15px;
+  color: rgb(25, 25, 31);
+  background-color: rgb(206, 208, 211);
+  border-radius: 15px;
+}
+.item img {
+  border-radius: 60px;
+}
+.postItem {
+  padding: 4px 10px;
+}
