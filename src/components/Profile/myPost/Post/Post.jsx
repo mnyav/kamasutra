@@ -13,7 +13,7 @@ const Post = ({ message, like }) => {
         />
         <div>{message}</div>
         <div>
-          <span> {like}</span>
+          <span>like: {like}</span>
         </div>
       </div>
     </div>

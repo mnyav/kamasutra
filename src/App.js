@@ -7,19 +7,32 @@ import Music from "./components/pages/music";
 import News from "./components/pages/news.jsx";
 import Setings from "./components/pages/setings.jsx";
 import { Route, BrowserRouter } from "react-router-dom";
+function App(props) {
 
-function App() {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav />
+        <Nav data={props.state.dialogsPage.dialogsData} />
         <div className="app-wrapper-content">
-          <Route path="/dialogs" component={Dialogs} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/Music" component={Music} />
-          <Route path="/news" component={News} />
-          <Route path="/seting" component={Setings} />
+          <Route
+            path="/dialogs"
+            render={() => <Dialogs data={props.state.dialogsPage} />}
+          />
+          <Route
+            path="/profile"
+            render={() => (
+              <Profile
+              newPostText={props.newPostText}
+                newPostData={props.newPostData}
+                postData={props.state.postsPage}
+                updatePost={props.updatePost}
+              />
+            )}
+          />
+          <Route path="/Music" render={() => <Music />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/seting" render={() => <Setings />} />
         </div>
       </div>
     </BrowserRouter>

@@ -1,48 +1,39 @@
 import React from "react";
 import s from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
-
-const DialogItem = (props) => {
-  const { name, id } = props;
-  return (
-    <div className={s.dialog + " " + s.active}>
-      <NavLink to={"/dialogs/" + id}>{name}</NavLink>
-    </div>
-  );
-};
-
-const DialogMessage = (props) => {
-  const { message } = props;
-  return <div className={s.message}>{message}</div>;
-};
-
-const dialigsData = [
-  { id: 1, name: "Tesak B.S" },
-  { id: 2, name: "Sava Y.A" },
-  { id: 3, name: "kravets V.I" },
-  { id: 4, name: "Tarasenko N.A" },
-  { id: 5, name: "Antonenko D.L" },
-];
-const messageData = [
-  { id: 1, message: "hello my name is bob" },
-  { id: 2, message: "fack you" },
-  { id: 3, message: "am  fine" },
-  { id: 4, message: "drinck alcogol" },
-  { id: 5, message: "wery bead" },
-];
+import DialogItem from "./DialogsItem/DialogsItem";
+import DialogMessage from "./DialogsMessage/DialogsMessage";
 
 const Dialogs = (props) => {
-  const newDialogs = dialigsData.map((item, i) => {
+  const { dialogsData, messageData } = props.data;
+
+  const newDialogs = dialogsData.map((item, i) => {
     return <DialogItem name={item.name} id={item.id} key={i} />;
   });
   const newMessage = messageData.map((item, i) => {
     return <DialogMessage message={item.message} id={item.id} key={i} />;
   });
+
+  let newElement = React.createRef();
+
+  const ale = (text) => {
+    text = newElement.current.value;
+    alert(text);
+  };
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{newDialogs}</div>
 
-      <div className={s.messages}>{newMessage}</div>
+      <div className={s.messages}>
+        <div className={s.dialogWindow}>
+          <h3>Dialog window</h3>
+          <textarea ref={newElement} cols="15" rows="3"></textarea>
+          <div className="btn">
+            <button onClick={ale}>add</button>
+            <button>delete</button>
+          </div>
+        </div>
+        {newMessage}
+      </div>
     </div>
   );
 };
