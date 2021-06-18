@@ -6,7 +6,6 @@ const DialogMessage = (props) => {
   return (
     <div className={s.message}>
       {message}
-     
     </div>
   );
 };

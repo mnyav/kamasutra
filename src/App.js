@@ -23,7 +23,7 @@ function App(props) {
             path="/profile"
             render={() => (
               <Profile
-              newPostText={props.newPostText}
+                newPostText={props.newPostText}
                 newPostData={props.newPostData}
                 postData={props.state.postsPage}
                 updatePost={props.updatePost}

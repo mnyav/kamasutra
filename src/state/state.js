@@ -27,13 +27,17 @@ const state = {
     newPostText: "tesak",
   },
 };
+window.state = state;
+
 console.log(state.postsPage.newPostText);
-export const newPostData = (post) => {
+export const newPostData = () => {
   let newPost = {
     like: 0,
-    message: post,
+    message: state.postsPage.newPostText,
   };
   state.postsPage.postData.push(newPost);
+  state.postsPage.newPostText = "";
+
   rerender(state);
 };
 export const updatePost = (text) => {
