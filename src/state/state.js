@@ -16,6 +16,7 @@ const state = {
       { id: 4, message: "drinck alcogol" },
       { id: 5, message: "wery bead" },
     ],
+    newMessage: "new mesagge",
   },
   postsPage: {
     postData: [
@@ -27,9 +28,7 @@ const state = {
     newPostText: "tesak",
   },
 };
-window.state = state;
 
-console.log(state.postsPage.newPostText);
 export const newPostData = () => {
   let newPost = {
     like: 0,
@@ -44,5 +43,20 @@ export const updatePost = (text) => {
   state.postsPage.newPostText = text;
   rerender(state);
 };
+
+export const newMessageObj = () => {
+  let newM = {
+    id: 100,
+    message: state.dialogsPage.newMessage,
+  };
+  state.dialogsPage.messageData.push(newM);
+  rerender(state);
+};
+
+export const updateMessageState = (text) => {
+  state.dialogsPage.newMessage = text;
+  rerender(state);
+};
+window.state = state;
 
 export default state;

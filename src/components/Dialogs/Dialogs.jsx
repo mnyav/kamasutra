@@ -15,9 +15,15 @@ const Dialogs = (props) => {
 
   let newElement = React.createRef();
 
-  const ale = (text) => {
-    text = newElement.current.value;
-    alert(text);
+  const addMessage = () => {
+    props.newMessageObj();
+    props.updateMessageState("")
+  };
+  const updateMessage = () => {
+    let text = newElement.current.value;
+    props.updateMessageState(text);
+    
+    console.log(text);
   };
   return (
     <div className={s.dialogs}>
@@ -26,9 +32,15 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         <div className={s.dialogWindow}>
           <h3>Dialog window</h3>
-          <textarea ref={newElement} cols="15" rows="3"></textarea>
+          <textarea
+            onChange={updateMessage}
+            ref={newElement}
+            value={props.newMessage}
+            cols="15"
+            rows="3"
+          ></textarea>
           <div className="btn">
-            <button onClick={ale}>add</button>
+            <button onClick={addMessage}>add</button>
             <button>delete</button>
           </div>
         </div>

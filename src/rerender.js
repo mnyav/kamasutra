@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { newPostData, updatePost } from "./state/state";
+import { newPostData, updatePost, updateMessageState,newMessageObj } from "./state/state";
 
 export const rerender = (state) => {
   ReactDOM.render(
@@ -12,6 +12,8 @@ export const rerender = (state) => {
         newPostData={newPostData}
         state={state}
         updatePost={updatePost}
+        updateMessageState={updateMessageState}
+        newMessageObj={newMessageObj}
       />
     </React.StrictMode>,
     document.getElementById("root")

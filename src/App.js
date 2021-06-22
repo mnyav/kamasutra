@@ -17,7 +17,7 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
-            render={() => <Dialogs data={props.state.dialogsPage} />}
+            render={() => <Dialogs newMessageObj={props.newMessageObj} updateMessageState={props.updateMessageState} newMessage={props.state.dialogsPage.newMessage} data={props.state.dialogsPage} />}
           />
           <Route
             path="/profile"
