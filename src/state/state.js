@@ -1,4 +1,6 @@
-import { rerender } from "../rerender";
+let rerender = () => {
+  console.log("state");
+};
 
 const state = {
   dialogsPage: {
@@ -58,5 +60,9 @@ export const updateMessageState = (text) => {
   rerender(state);
 };
 window.state = state;
+
+export const subscribe = (observer) => {
+  rerender = observer;
+};
 
 export default state;
