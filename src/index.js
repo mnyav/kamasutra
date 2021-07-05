@@ -1,32 +1,23 @@
 import state from "./state/state";
 import React from "react";
-
+import store from "./state/state";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import {
-  newPostData,
-  updatePost,
-  updateMessageState,
-  newMessageObj,
-  subscribe,
-} from "./state/state";
 
 export const rerender = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <App
-        newPostText={state.postsPage.newPostText}
-        newPostData={newPostData}
-        state={state}
-        updatePost={updatePost}
-        updateMessageState={updateMessageState}
-        newMessageObj={newMessageObj}
+      state={store.getState()}
+        store={store}
+        // newPostData={store.newPostData.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById("root")
   );
 };
-subscribe(rerender);
+store.subscribe(rerender); 
+// !!!!!!!!
 
 rerender(state);

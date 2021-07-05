@@ -4,7 +4,7 @@ import DialogItem from "./DialogsItem/DialogsItem";
 import DialogMessage from "./DialogsMessage/DialogsMessage";
 
 const Dialogs = (props) => {
-  const { dialogsData, messageData } = props.data;
+  const { dialogsData, messageData } = props.state;
 
   const newDialogs = dialogsData.map((item, i) => {
     return <DialogItem name={item.name} id={item.id} key={i} />;
@@ -16,15 +16,16 @@ const Dialogs = (props) => {
   let newElement = React.createRef();
 
   const addMessage = () => {
-    props.newMessageObj();
-    props.updateMessageState("")
+    props.store.newMessageObj();
+    props.store.updateMessageState("");
   };
   const updateMessage = () => {
     let text = newElement.current.value;
-    props.updateMessageState(text);
-    
+    props.store.updateMessageState(text);
+
     console.log(text);
   };
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{newDialogs}</div>
@@ -35,7 +36,7 @@ const Dialogs = (props) => {
           <textarea
             onChange={updateMessage}
             ref={newElement}
-            value={props.newMessage}
+            value={props.state.newMessage}
             cols="15"
             rows="3"
           ></textarea>

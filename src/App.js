@@ -7,6 +7,7 @@ import Music from "./components/pages/music";
 import News from "./components/pages/news.jsx";
 import Setings from "./components/pages/setings.jsx";
 import { Route, BrowserRouter } from "react-router-dom";
+// import store from "./state/state";
 function App(props) {
 
   return (
@@ -17,16 +18,18 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
-            render={() => <Dialogs newMessageObj={props.newMessageObj} updateMessageState={props.updateMessageState} newMessage={props.state.dialogsPage.newMessage} data={props.state.dialogsPage} />}
+            render={() => (
+              <Dialogs state={props.state.dialogsPage} store={props.store} />
+            )}
           />
           <Route
             path="/profile"
             render={() => (
               <Profile
-                newPostText={props.newPostText}
-                newPostData={props.newPostData}
-                postData={props.state.postsPage}
-                updatePost={props.updatePost}
+                // newPostData={props.newPostData}
+                state={props.state.postsPage}
+                store={props.store}
+              
               />
             )}
           />
